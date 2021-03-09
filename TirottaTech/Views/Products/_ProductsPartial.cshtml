@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Product>
+
+@foreach (var product in Model)
+{
+    <div class="product-card">
+        <div class="img-container">
+            <a asp-action="Get" asp-route-id="@product.Id" class="product-img"><img src="@product.ImageUrl" alt=""></a>
+            <div class="overlay"></div>
+        </div>
+        <div class="info-container">
+            <h4>@product.Name</h4>
+            <p class="product-price">€@product.Price</p>
+            <form method="post">
+                <input type="submit" asp-controller="Cart" asp-action="Add" asp-route-id="@product.Id" value="Add to Cart" />
+            </form>
+        </div>
+    </div>
+}

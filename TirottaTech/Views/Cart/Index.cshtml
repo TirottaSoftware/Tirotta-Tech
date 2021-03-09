@@ -1,0 +1,63 @@
+﻿@model List<CartItem>
+<div class="cart-container">
+    <div class="item-container">
+        @if (Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <div class="cart-item">
+                    <img src="@item.Product.ImageUrl" />
+                    <div class="item-info">
+                        @if (item.Product.Name.Length > 20)
+                        {
+                            <h1>@item.Product.Name.Substring(0, 20)...</h1>
+                        }
+                        else
+                        {
+                            <h1>@item.Product.Name</h1>
+                        }
+                        <p>Quantity: @item.Quantity</p>
+                        <p>Price: €@item.Product.Price</p>
+                        <a asp-action="Remove" asp-route-id ="@item.ProductId">Remove</a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Cart is empty.</p>
+        }
+    </div>
+    <div class="cart-summary">
+        <h1>Order Summary</h1>
+        @foreach (var item in Model)
+        {
+            <div class="item-row">
+                <h4>@item.Product.Name x @item.Quantity</h4>
+                <p>&euro;@(item.Product.Price*@item.Quantity)</p>
+            </div>
+        }
+            <div class="item-row">
+                <h4>Total</h4>
+                <p>&euro;@Model.Sum(x=>x.Product.Price * x.Quantity)</p>
+            </div>
+            <input class="btn-add" type="submit" value="Checkout" />
+    </div>
+</div>
+<style>
+    @@media screen and (max-width: 980px) {
+        .cart-container {
+            flex-flow:column;
+            align-items:center;
+            border: none;
+            margin-bottom: 5%;
+        }
+        .cart-item h1{
+            white-space:unset
+        }
+        .cart-summary{
+            width: 90%;
+            margin: 1% auto;
+        }
+    }
+</style>

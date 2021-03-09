@@ -1,0 +1,36 @@
+﻿<div class="admin-container">
+    <h1>Admin Panel</h1>
+    <div class="admin-sidebar ">
+        <a asp-action="Add" class="sidebar-btn">Add a product</a>
+        <a asp-action="Remove" class="sidebar-btn">Remove a product</a>
+    </div>
+</div>
+
+<style>
+    @@media only screen and (max-width : 1350px) {
+        .admin-container {
+            display: flex;
+            flex-flow: column;
+            text-align: center;
+        }
+
+        .admin-sidebar {
+            flex-flow: row;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .admin-sidebar a {
+            padding: 1%;
+        }
+
+        .add-form {
+            margin: 5% auto;
+        }
+
+        .add-form h1 {
+            white-space: nowrap;
+            text-align: center;
+        }
+    }
+</style>

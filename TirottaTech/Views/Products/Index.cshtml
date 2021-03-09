@@ -1,0 +1,65 @@
+﻿@using TirottaTech.Services
+@inject IBrandsService brandsService
+
+@model IEnumerable<Product>
+<link rel="stylesheet" href="~/css/site-sm.css" />
+<h1 class="products-title">Our Products</h1>
+<div class="sort-container">
+    <label>Sort</label>
+    <select id="sort-filter">
+        <option value="none"></option>
+        <option value="lowtohigh">Price(Low to High)</option>
+        <option value="hightolow">Price(High to Low)</option>
+        <option value="az"> A-Z</option>
+        <option value="za"> Z-A</option>
+    </select>
+    <label>Brand</label>
+    <select id="brand-filter" asp-items="@brandsService.GetAllBrands()">
+        <option value="none"></option>
+    </select>
+</div>
+
+<div class="cards-container">
+    <partial name="_ProductsPartial" />
+    @*
+*@
+</div>
+@section Scripts{
+    <script>
+
+        var filters = {
+            "sort": null,
+            "brand": null,
+        }
+
+        $("#sort-filter").change(function (e) {
+            filters.sort = $("#sort-filter").val();
+            filters.brand = $("#brand-filter").val();
+            e.preventDefault();
+            $.ajax({
+                url: "Products/Filter",
+                data: filters,
+                dataType: "html",
+                cache: false,
+            }).done(function (result) {
+                console.log(result);
+                $(".cards-container").html(result);
+            })
+        });
+
+        $("#brand-filter").change(function (e) {
+            filters.sort = $("#sort-filter").val();
+            filters.brand = $("#brand-filter").val();
+            e.preventDefault();
+            $.ajax({
+                url: "Products/Filter",
+                data: filters,
+                dataType: "html",
+                cache: false,
+            }).done(function (result) {
+                $(".cards-container").html(result);
+            })
+        });
+
+    </script>
+}

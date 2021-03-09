@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Product>
+<partial name="_SidebarPartial" />
+<div class="offset-4 ">
+    <h1 id="remove-title">Remove a product</h1>
+    @foreach (var product in Model)
+    {
+        <div class="product-row">
+            <h6>@product.Name</h6>
+            <form method="post">
+                <input class="btn-add" asp-route-id="@product.Id" type="submit" value="Remove" />
+            </form>
+        </div>
+    }
+</div>
+
+<style>
+    .product-row {
+        width: 40%;
+        margin: 1%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .product-row .btn-add {
+        padding: 3% 20%;
+    }
+
+    #remove-title {
+        margin-bottom: 3%;
+        margin-top: -10%;
+    }
+    @@media only screen and (max-width : 1350px) {
+        #remove-title {
+            margin: 5%;
+            text-align: center;
+        }
+
+        .remove-container {
+            text-align: center;
+            align-items: center;
+        }
+
+        .offset-4 {
+            margin: 0;
+        }
+
+        .product-row {
+            white-space: nowrap;
+            text-align: start;
+            justify-content: space-between;
+            margin: 1% auto;
+            align-self: center;
+            width: 80%;
+        }
+    }
+</style>

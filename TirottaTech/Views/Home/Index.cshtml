@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="index-hero">
+    
+</div>
+<div class="about-us">
+    <div class="about-title">
+        <div id="title-line"></div>
+            <h1>About Our Store</h1>        
+        <div id="title-line"></div>
+    </div>
+    <p>
+        In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.
+        In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.
+        In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.
+        In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.
+    </p>
+    <a asp-action="Index" asp-controller="Products" id="btn-store">Discover</a>
+</div>
+<h3 id="deals-title"> Latest Deals</h3>
+<div class="bg-deal">
+    <div class="deal-description">
+        <h2>Lenovo Ideapad Gaming 3</h2>
+        <ul>
+            <li>i5 10TH GEN CPU</li>
+            <li>GeForce 1650 Graphics</li>
+            <li>512/1024GB SSD</li>
+        </ul>
+        <a asp-controller="Products" asp-action="Get" asp-route-id="53">Learn more</a>
+    </div>
+</div>
+<style>
+    @@media screen and (max-width: 760px){
+        .about-us p{
+            margin:0 10%;
+            width: 80%;
+        }
+        #btn-store{
+            margin-top: 5%;
+        }
+    }
+</style>

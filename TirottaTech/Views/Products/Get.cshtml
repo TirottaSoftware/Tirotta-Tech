@@ -1,0 +1,24 @@
+﻿@model Product
+<div class="get-product-container">
+    <img src ="@Model.ImageUrl" />
+    <div class="product-info">
+        <h3>@Model.Name</h3>
+        <p>@Model.Description</p>
+        <h3>Price: @Model.Price&euro;</h3>
+        <form method="post">
+            <input type="submit" asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id" class="btn-cart" value="Add to Cart" />
+        </form>
+    </div>
+</div>
+<style>
+    @@media screen and (max-width: 768px) {
+        .get-product-container {
+            flex-flow: column;
+        }
+
+        .get-product-container img {
+            width: 90%;
+            height: auto;
+        }
+    }
+</style>

@@ -1,0 +1,80 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="login-container">
+    <div class="panel-left">
+        <h4>TECH-TIROTTA</h4>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem necessitatibus doloribus quo fugiat, nemo ex.</p>
+    </div>
+    <div class="panel-right">
+        <form method="post">
+            <h4>Register</h4>
+            <div asp-validation-summary="All" class="auth-validation"></div>
+            <input type="text" asp-for="Input.Email" placeholder="Email" />
+
+            <input type="password" asp-for="Input.Password" placeholder="Password" />
+
+            <input type="password" asp-for="Input.ConfirmPassword" placeholder="Confirm Password" />
+
+            <input class="btn-login" type="submit" value="Sign Up" />
+
+            <div class="register-container">
+                <label>
+                    Already a user?
+                    <a class="btn-register" asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl"> Login</a>
+                </label>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    @@media screen and (max-width: 868px) {
+        .login-container {
+            width: auto;
+            box-shadow: unset;
+            flex-flow: column;
+            align-items: center;
+            border: 1px solid black;
+            height: 70%;
+        }
+        .auth-validation{
+            text-align:center;
+            color:red;
+            font-size: .7rem;
+            list-style:none;
+            width: 70%;
+        }
+        .panel-left, .panel-right {
+            width: auto;
+            align-items: center;
+        }
+
+        .panel-left h4 {
+            margin: 1%;
+            text-align: center;
+        }
+
+        .panel-right form {
+            width: 100%;
+            margin: 1%;
+        }
+
+        .panel-right h4 {
+            text-align: center;
+            margin-top: 5%;
+        }
+
+        .panel-right form .btn-login {
+            align-self: center;
+        }
+        .register-container{
+            justify-content:center;
+        }
+    }
+</style>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
